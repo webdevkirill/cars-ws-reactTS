@@ -1,11 +1,20 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import ReconnectingWebSocket from 'reconnecting-websocket';
 
+export type ColorsTypes =
+	| 'black'
+	| 'white'
+	| 'red'
+	| 'green'
+	| 'blue'
+	| 'yellow'
+	| 'silver';
+export type ClassTypes = 'car' | 'bus' | 'truck' | 'motorcycle';
 interface CarsProps {
 	deviceId: string;
 	timestamp: number;
-	color: 'black' | 'white' | 'red' | 'green' | 'blue' | 'yellow' | 'silver';
-	class: 'car' | 'bus' | 'truck' | 'motorcycle';
+	color: ColorsTypes;
+	class: ClassTypes;
 	plate: string;
 	speed: number;
 }
