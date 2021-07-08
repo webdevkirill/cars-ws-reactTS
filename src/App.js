@@ -1,5 +1,8 @@
+import { useWS } from './useWS';
+
 function App() {
-	const ws = new WebSocket('ws://localhost:5000');
+	const { isConnect } = useWS('ws://localhost:5000');
+
 	return <div className='app'>Hello</div>;
 }
 
