@@ -14,15 +14,13 @@ export interface FiltersProps {
 	carClass: 'all' | ClassTypes;
 }
 
-interface AllFilterProps {
-	filters: FiltersProps;
-	setFilters: Dispatch<SetStateAction<FiltersProps>>;
-}
-
 export const Filters = ({
 	filters,
 	setFilters,
-}: AllFilterProps): JSX.Element => {
+}: {
+	filters: FiltersProps;
+	setFilters: Dispatch<SetStateAction<FiltersProps>>;
+}): JSX.Element => {
 	const classes = FilterClasses();
 
 	const changeFilterHandler = (name: string, value: string) => {

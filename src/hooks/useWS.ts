@@ -21,8 +21,7 @@ export interface CarsProps {
 
 export const useWS = (url: string) => {
 	const [isConnect, setIsConnect] = useState(false);
-	const initCars: CarsProps[] = [];
-	const [cars, setCars] = useState(initCars);
+	const [cars, setCars] = useState<CarsProps[]>([]);
 	const socket: any = useRef();
 
 	const connect = useCallback(() => {
