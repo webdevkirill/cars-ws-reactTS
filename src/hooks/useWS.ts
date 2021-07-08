@@ -10,11 +10,11 @@ export type ColorsTypes =
 	| 'yellow'
 	| 'silver';
 export type ClassTypes = 'car' | 'bus' | 'truck' | 'motorcycle';
-interface CarsProps {
+export interface CarsProps {
 	deviceId: string;
 	timestamp: number;
 	color: ColorsTypes;
-	class: ClassTypes;
+	carClass: ClassTypes;
 	plate: string;
 	speed: number;
 }
@@ -24,8 +24,6 @@ export const useWS = (url: string) => {
 	const initCars: CarsProps[] = [];
 	const [cars, setCars] = useState(initCars);
 	const socket: any = useRef();
-
-	console.log(cars);
 
 	const connect = useCallback(() => {
 		socket.current = new ReconnectingWebSocket(url);

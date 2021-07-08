@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { useWS } from './hooks/useWS';
 import { Filters, FiltersProps } from './components/Filters/Filters';
-import { useState } from 'react';
+import { Cars } from './components/Cars/Cars';
 
 function App(): JSX.Element {
 	const { isConnect, cars } = useWS('ws://localhost:5000');
@@ -14,6 +15,7 @@ function App(): JSX.Element {
 	return (
 		<div className='app'>
 			<Filters filters={filters} setFilters={setFilters} />
+			<Cars filters={filters} cars={cars} />
 		</div>
 	);
 }
