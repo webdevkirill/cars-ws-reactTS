@@ -1,10 +1,20 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import ReconnectingWebSocket from 'reconnecting-websocket';
 
-export const useWS = (url) => {
+interface CarsProps {
+	deviceId: string;
+	timestamp: number;
+	color: 'black' | 'white' | 'red' | 'green' | 'blue' | 'yellow' | 'silver';
+	class: 'car' | 'bus' | 'truck' | 'motorcycle';
+	plate: string;
+	speed: number;
+}
+
+export const useWS = (url: string) => {
 	const [isConnect, setIsConnect] = useState(false);
-	const [cars, setCars] = useState([]);
-	const socket = useRef();
+	const initCars: CarsProps[] = [];
+	const [cars, setCars] = useState(initCars);
+	const socket: any = useRef();
 
 	console.log(cars);
 
@@ -17,7 +27,7 @@ export const useWS = (url) => {
 			setIsConnect(true);
 		});
 
-		socket.current.addEventListener('message', (event) => {
+		socket.current.addEventListener('message', (event: MessageEvent) => {
 			const newCars = JSON.parse(event.data);
 			setCars((prevState) => [newCars, ...prevState]);
 		});
