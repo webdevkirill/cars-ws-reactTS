@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import ReconnectingWebSocket from 'reconnecting-websocket';
 
 export const useWS = (url) => {
 	const [isConnect, setIsConnect] = useState(false);
@@ -8,9 +9,11 @@ export const useWS = (url) => {
 	console.log(cars);
 
 	const connect = useCallback(() => {
-		socket.current = new WebSocket(url);
+		socket.current = new ReconnectingWebSocket(url);
+		socket.current.reconnectInterval = 5000;
 
 		socket.current.addEventListener('open', () => {
+			console.log('Подключение установлено');
 			setIsConnect(true);
 		});
 
