@@ -39,6 +39,7 @@ export const useWS = (url: string) => {
 		});
 
 		socket.current.addEventListener('close', () => {
+			setIsConnect(false);
 			console.warn('Соединение закрыто');
 		});
 	}, [url]);

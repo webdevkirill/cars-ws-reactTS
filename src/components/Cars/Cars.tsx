@@ -54,6 +54,7 @@ export const Cars = ({
 					}) => {
 						return (
 							<Grid
+								container
 								direction='column'
 								justifyContent='flex-start'
 								alignItems='flex-start'
