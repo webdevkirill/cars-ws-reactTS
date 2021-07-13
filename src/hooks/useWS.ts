@@ -47,6 +47,7 @@ export const useWS = (url: string) => {
 	useEffect(() => {
 		connect();
 		return () => {
+			socket.current.close();
 			socket.current.removeEventListener('open');
 			socket.current.removeEventListener('message');
 			socket.current.removeEventListener('close');
