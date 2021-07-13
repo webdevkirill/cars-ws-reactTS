@@ -46,13 +46,17 @@ function randomInteger(min = 60, max = 130) {
 	return Math.floor(rand);
 }
 
+function randomProperty(props) {
+	return props[randomInteger(0, props.length - 1)];
+}
+
 function randomCar() {
 	return {
 		deviceId: '' + Date.now(),
 		timestamp: Date.now(),
-		color: carColors[randomInteger(0, carColors.length - 1)],
-		carClass: carClasses[randomInteger(0, carClasses.length - 1)],
-		plate: carPlates[randomInteger(0, carPlates.length - 1)],
+		color: randomProperty(carColors),
+		carClass: randomProperty(carClasses),
+		plate: randomProperty(carPlates),
 		speed: randomInteger(),
 	};
 }
