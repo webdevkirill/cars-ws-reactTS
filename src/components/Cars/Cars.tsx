@@ -33,8 +33,6 @@ export const Cars = ({
 		motorcycle: 'Мотоцикл ' + String.fromCodePoint(0x1f3cd),
 	};
 
-	console.log(cars);
-
 	return (
 		<Container fixed>
 			<Grid
